@@ -1,0 +1,28 @@
+//#options
+option java_multiple_files = true;
+option java_package = "fibonacci.grpc";
+option java_outer_classname = "FibonacciProto";
+
+package fibonacci;
+//#options
+
+//#services
+// The Fibonacci service definition.
+service FibonacciService {
+
+    rpc StreamFibonacci (FibRequest) returns (stream FibReply) {}
+
+}
+//#services
+
+//#messages
+// The request message containing the user's name.
+message FibRequest {
+    int32 stopAt = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+    int32 num = 1;
+}
+//#messages

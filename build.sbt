@@ -23,6 +23,8 @@ lazy val grpc = project.settings(commonSettings,
     "org.typelevel" %% "cats-effect" % "1.0.0-RC2",
     "co.fs2" %% "fs2-core" % "1.0.0-M1",
      "com.lightbend.akka.grpc" %% "akka-grpc-runtime" % "0.2"	
-  )
+  ),
+  enablePlugins(AkkaGrpcPlugin)
+
 )
 
