@@ -1,3 +1,5 @@
+syntax = "proto3";
+
 //#options
 option java_multiple_files = true;
 option java_package = "fibonacci.grpc";
@@ -22,7 +24,7 @@ message FibRequest {
 }
 
 // The response message containing the greetings
-message HelloReply {
+message FibReply {
     int32 num = 1;
 }
 //#messages
