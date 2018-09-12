@@ -16,7 +16,7 @@ lazy val commonLibs = Seq(
   "org.typelevel" %% "cats-macros" % "1.1.0"
 )
 
-lazy val grpc = project.settings(commonSettings,
+lazy val grpc = project.enablePlugins(AkkaGrpcPlugin).settings(commonSettings,
   libraryDependencies := commonLibs ++ Seq(
     "com.typesafe.akka" %% "akka-actor" % "2.5.13",
     "com.typesafe.akka" %% "akka-stream" % "2.5.13",
@@ -32,7 +32,7 @@ lazy val grpc = project.settings(commonSettings,
     (f: File) => f.getAbsolutePath.endsWith("google/protobuf/empty.proto")),
   // This is the default - both client and server
   akkaGrpcGeneratedSources := Seq(AkkaGrpc.Client, AkkaGrpc.Server),
-  akkaGrpcGeneratedLanguages := Seq(AkkaGrpc.Scala)
-
-).enablePlugins(AkkaGrpcPlugin)
+  akkaGrpcGeneratedLanguages := Seq(AkkaGrpc.Scala),
+javaAgents += "org.mortbay.jetty.alpn" % "jetty-alpn-agent" % "2.0.7" % "runtime;test"
+)
 
