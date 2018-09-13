@@ -27,7 +27,9 @@ lazy val grpc = project.
     "com.typesafe.akka" %% "akka-stream" % "2.5.13",
     "org.typelevel" %% "cats-effect" % "1.0.0-RC2",
     "co.fs2" %% "fs2-core" % "1.0.0-M1",
-     "com.lightbend.akka.grpc" %% "akka-grpc-runtime" % "0.2"	
+     "com.lightbend.akka.grpc" %% "akka-grpc-runtime" % "0.2",
+    "io.grpc" % "grpc-core" % "1.14.0",  // I think these are pulled transitively
+    "io.grpc" % "grpc-stub" % "1.14.0" // I think these are pulled transitively
   ),
   excludeFilter in PB.generate := new SimpleFileFilter(
     (f: File) => f.getAbsolutePath.endsWith("google/protobuf/empty.proto")),
