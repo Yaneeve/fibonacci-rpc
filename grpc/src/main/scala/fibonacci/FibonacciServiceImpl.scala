@@ -10,5 +10,10 @@ class FibonacciServiceImpl (materializer: Materializer) extends  FibonacciServic
   import materializer.executionContext
   private implicit val mat: Materializer = materializer
 
-  override def streamFibonacci(in: FibRequest): Source[FibReply, NotUsed] = ???
+  val fibs: Stream[Int] = 0 #:: fibs.scanLeft(1)(_ + _)
+
+  override def streamFibonacci(in: FibRequest): Source[FibReply, NotUsed] = {
+    val value: Source[Int, NotUsed] = Source.fromIterator({ () => fibs.toIterator })
+    value.map(FibReply(_))
+  }
 }
